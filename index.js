@@ -14,10 +14,9 @@ app.post("/webhook", (req, res) => {
   const message = req.body.message;
 
   if (message) {
-    const chatId = message.chat.id;
-    const responseText = message.text;
-
     console.log("Getting message:", message);
+    const chatId = message.message_id;
+    const responseText = message.text.split(" ")[1];
 
     // Send a reply to the user
     axios
