@@ -11,13 +11,16 @@ const BOT_TOKEN = "6546219051:AAHmWKloQQurtSw9LqOSuseKb3RSvwNqZeA";
 app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
-  const message = req.body.message;
+  const message = req.body;
+  console.log("Getting message:", message);
 
   if (message) {
-    console.log("Getting message:", message);
-    const chatId = message.message_id;
+    const chatId = message.from.id;
     // Splitting ['/start 001'] and retrieving 001
     const responseText = message.text.split(" ")[1];
+
+    console.log("ChatId:", chatId);
+    console.log("responseText:", responseText);
 
     // Send a reply to the user
     axios
