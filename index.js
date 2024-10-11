@@ -11,22 +11,19 @@ const BOT_TOKEN = "6546219051:AAHmWKloQQurtSw9LqOSuseKb3RSvwNqZeA";
 app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
-  const message = req.body;
-  console.log("Getting message:", message);
+  const body = req.body;
+  console.log("Getting message:", body);
 
-  if (message) {
-    const chatId = message.from.id;
+  if (body) {
+    const chatId = body.message.from.id;
     // Splitting ['/start 001'] and retrieving 001
-    const responseText = message.text.split(" ")[1];
-
-    console.log("ChatId:", chatId);
-    console.log("responseText:", responseText);
+    const text = body.message.text.split(" ")[1];
 
     // Send a reply to the user
     axios
       .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         chat_id: chatId,
-        text: responseText,
+        text: text,
       })
       .then(() => {
         res.send("Message sent");
