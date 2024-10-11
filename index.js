@@ -30,10 +30,10 @@ app.post("/webhook", (req, res) => {
         res.send("Error sending message");
       });
 
-    if (text === "/start") {
-      // Handle the 'start' command
-      console.log("Received /start command from chat:", chatId);
-    }
+    // if (text === "/start") {
+    //   // Handle the 'start' command
+    //   console.log("Received /start command from chat:");
+    // }
   } else {
     res.send("No message received");
   }
