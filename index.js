@@ -16,6 +16,7 @@ app.post("/webhook", (req, res) => {
   if (message) {
     console.log("Getting message:", message);
     const chatId = message.message_id;
+    // Splitting ['/start 001'] and retrieving 001
     const responseText = message.text.split(" ")[1];
 
     // Send a reply to the user
