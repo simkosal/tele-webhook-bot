@@ -5,7 +5,6 @@ const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Replace with your actual bot token
 const BOT_TOKEN = "6546219051:AAHmWKloQQurtSw9LqOSuseKb3RSvwNqZeA";
 
 app.use(bodyParser.json());
@@ -15,7 +14,7 @@ app.post("/webhook", (req, res) => {
 
   if (message) {
     const chatId = message.chat.id;
-    const responseText = "Webhook: You are connnected!";
+    const responseText = message.text;
 
     // Send a reply to the user
     axios
