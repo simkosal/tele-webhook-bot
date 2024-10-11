@@ -17,6 +17,8 @@ app.post("/webhook", (req, res) => {
     const chatId = message.chat.id;
     const responseText = message.text;
 
+    console.log("Getting message:", message);
+
     // Send a reply to the user
     axios
       .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
