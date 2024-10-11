@@ -16,19 +16,24 @@ app.post("/webhook", (req, res) => {
     const chatId = message.chat.id;
     const responseText = message.text;
 
-    // Send a reply to the user
-    axios
-      .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        chat_id: chatId,
-        text: responseText,
-      })
-      .then(() => {
-        res.send("Message sent");
-      })
-      .catch((err) => {
-        console.error("Error sending message:", err);
-        res.send("Error sending message");
-      });
+    if (text === "/start") {
+      // Handle the 'start' command
+      console.log("Received /start command from chat:", chatId);
+
+      // Send a reply to the user
+      axios
+        .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          chat_id: chatId,
+          text: responseText,
+        })
+        .then(() => {
+          res.send("Message sent");
+        })
+        .catch((err) => {
+          console.error("Error sending message:", err);
+          res.send("Error sending message");
+        });
+    }
   } else {
     res.send("No message received");
   }
