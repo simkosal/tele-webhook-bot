@@ -13,7 +13,6 @@ app.post("/webhook", (req, res) => {
   const message = req.body.message;
 
   if (message) {
-    console.log("Recieved message:", message);
     const chatId = message.chat.id;
     const responseText = message.text;
 
