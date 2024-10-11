@@ -5,6 +5,7 @@ const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Replace with your actual bot token
 const BOT_TOKEN = "6546219051:AAHmWKloQQurtSw9LqOSuseKb3RSvwNqZeA";
 
 app.use(bodyParser.json());
@@ -29,11 +30,6 @@ app.post("/webhook", (req, res) => {
         console.error("Error sending message:", err);
         res.send("Error sending message");
       });
-
-    // if (text === "/start") {
-    //   // Handle the 'start' command
-    //   console.log("Received /start command from chat:");
-    // }
   } else {
     res.send("No message received");
   }
