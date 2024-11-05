@@ -19,11 +19,13 @@ app.post("/webhook", (req, res) => {
     // Splitting ['/start 001'] and retrieving 001
     const text = body.message.text.split(" ")[1];
 
+    const updateUser = `${chatId} connect with username ${text}`;
+
     // Send a reply to the user
     axios
       .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         chat_id: chatId,
-        text: text,
+        text: updateUser,
       })
       .then(() => {
         res.send("Message sent");
